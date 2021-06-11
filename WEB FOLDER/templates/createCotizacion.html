@@ -1,0 +1,30 @@
+{% extends "layout.html" %}
+
+    {% block title %}Crear Cotización{% endblock %}
+{% block content %}
+ <form action="/createCotSuccesful"  method="POST">
+        <div class="form">
+                <input class="formtextfield" type="hidden" id = "idCliente" name="idCliente" autofocus="true" tabindex="1" value="{{idCliente}}" />
+        </div>
+        <label for="product">Escoger Producto:</label>
+  		<select id="idProducto" name="idProducto">
+        {%for i in range(0, len)%}
+
+        <option value="{{products[i].idProduct}}">{{products[i].nameProduct}}</option>
+        {%endfor%}
+
+        <div class="form">
+            <label class="formlabel">Horas</label>
+            <input class="formtextfield" type="number" id = "hrs" name="hrs" autofocus="true" tabindex="1" placeholder="Horas" min="0"/>
+        </div>
+        <div class="form">
+            <label class="formlabel">Comentarios</label>
+            <input class="formtextfield" type="text" id = "comentarios" name="comentarios" autofocus="true" tabindex="1" placeholder="Comentarios"/>
+        </div>
+        <div class="form">
+            <label class="formlabel">Fecha límite de pago</label>
+            <input class="formtextfield" type="date" id = "pago" name="pago" autofocus="true" tabindex="1"/>
+        </div>
+        <button type="submit">Crear</button>
+    </form>
+{% endblock %}

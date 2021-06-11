@@ -1,0 +1,16 @@
+{% extends "layout.html" %}
+
+	{% block title %}Crear Usuario{% endblock %}
+{% block content %}
+<form method="POST" action="{{url_for('createUserSuccesful')}}">
+	<div class="form-group">
+		<label for="username">Nombre de Usuario</label>
+	<input type="text" name="username" id = "username">
+	</div>
+	<div class="form-group">
+		<label for="passw">Contraseña</label>
+	<input type="password" name="passw" id = "passw">
+	</div>
+	<button type="submit">Submit</button>
+</form>
+{% endblock %}

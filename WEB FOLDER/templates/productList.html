@@ -1,0 +1,25 @@
+{% extends "layout.html" %}
+
+	{% block title %}Lista de Productos{% endblock %}
+{% block content %}
+<table style="width:100%;">
+	<tr>
+		<th>id Producto</th>
+		<th>Nombre del producto</th>
+		<th>Precio</th>
+		<th>Categoría</th>
+	</tr>
+	<tr>
+		{%for i in range(0, len)%}
+	<td>{{products[i].idProduct}}</td>
+	<td>{{products[i].nameProduct}}</td>
+	<td>{{products[i].priceProduct}}</td>
+	<td>{{products[i].category}}</td>
+	<td><a href="{{url_for('productDetails',productId=products[i].idProduct)}}" >
+		Detalles
+	</a></td>
+</tr>
+	{%endfor%}
+	
+</table>
+{% endblock %}

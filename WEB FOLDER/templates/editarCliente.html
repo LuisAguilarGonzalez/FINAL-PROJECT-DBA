@@ -1,0 +1,37 @@
+{% extends "layout.html" %}
+
+     {% block title %}Editar Cliente{% endblock %}
+{% block content %}
+{{client.idClient}}
+<form action="{{url_for('editClientSuccesful')}}" method="POST">
+	<div class="form">
+		<input type="hidden" name="idClient" id="idClient" value="{{client.idClient}}">
+				<label class="formlabel">Nombre</label>
+				<input class="formtextfield" type="text" id = "nombre" name="nombre" autofocus="true" tabindex="1" placeholder="NOMBRE" value="{{client.nameClient}}" />
+				<div class="formerror hidden">
+				</div>
+				<div class="form">
+					<label class="formlabel">RFC</label>
+					<input class="formtextfield" type="text" id = "rfc" name="rfc" autofocus="true" tabindex="1" placeholder="RFC" value="{{client.rfcClient}}" />
+					<div class="formerror hidden">
+					</div>
+					<div class="form">
+						{%if client.typeClient%}
+						<label>Físico
+							<input type="radio" id = "tipoCliente" name="tipoCliente" value="true" checked/>
+						</label> 
+						<label>Moral
+							<input type="radio" id = "tipoCliente" name="tipoCliente" value="false" />
+						</label>
+						{%else%}
+						<label>Físico
+							<input type="radio" id = "tipoCliente" name="tipoCliente" value="true" />
+						</label> 
+						<label>Moral
+							<input type="radio" id = "tipoCliente" name="tipoCliente" value="false" checked/>
+						</label>
+					</div>
+{% endif %}
+<button type="submit">SUBMIT</button>
+</form>
+{% endblock %}

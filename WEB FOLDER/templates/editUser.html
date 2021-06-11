@@ -1,0 +1,10 @@
+{% extends "layout.html" %}
+
+     {% block title %}Usuarios{% endblock %}
+{% block content %}
+<form action="{{url_for('changePassw')}}" method="POST">
+	<input type="hidden" name="idUser" value="{{userId}}">
+	<input type="password" name="passw" id = "passw">
+	<button type="submit">Cambiar</button>
+</form>
+{% endblock %}

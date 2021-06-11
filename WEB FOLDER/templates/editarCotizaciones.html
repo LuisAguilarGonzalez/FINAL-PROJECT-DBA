@@ -1,0 +1,29 @@
+{% extends "layout.html" %}
+
+     {% block title %}Editar Cotización{% endblock %}
+{% block content %}
+<form action="{{url_for('alterCot')}}" method="POST" onSubmit="return confirm('¿Estás seguro que quieres editar la cotización (Esta acción no se puede cambiar)?');">
+<input type="hidden" name="idCot" value="{{idCot}}">
+<input type="hidden" name="idProduct" value="{{idProduct}}">
+
+{%for i in details%}
+{{i[1]}}
+					{{i[2]}}
+
+<input type="hidden" name="includeId" value = "{{i[0]}}" >
+	<div class="form">
+					
+						<label>Incluir
+							<input type="radio" id = "bool" name="id{{i[0]}}" value="true" checked="checked" />
+						</label> 
+						<label>No Incluir
+							<input type="radio" id = "bool" name="id{{i[0]}}" value="false" />
+						</label>
+					</div>
+
+<br>
+{%endfor%}
+<button type="submit">Submit</button>
+
+</form>
+{% endblock %}

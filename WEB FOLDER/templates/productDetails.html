@@ -1,0 +1,16 @@
+{% extends "layout.html" %}
+
+	{% block title %}Detalles{% endblock %}
+{% block content %}
+{{productName}}
+<br>
+<table style="width:100%;">
+	<tr>{%for i in products%}
+		<td>{{i[0]}}</td>
+		<td>{{i[1]}}</td>
+		<td>{{i[2]}}</td>
+</tr>
+	{%endfor%}
+	
+</table>
+{% endblock %}

@@ -1,0 +1,58 @@
+
+	{% extends "layout.html" %}
+
+	{% block title %}Cotizaciones{% endblock %}
+{% block content %}
+<table style="width:100%;">
+	<thead>
+	<tr>
+		<th># Cotización</th>
+		<th>Nombre Cliente</th>
+		<th>Nombre Producto</th>
+		<th>Subtotal</th>
+		<th>Descuentos</th>
+		<th>Total</th>
+		<th>Comentarios</th>
+		<th>Fecha límite de pago</th>
+		<th>Opciones</th>
+	</tr>
+	</thead>
+	<tbody>
+	{%for i in range(0, len)%}
+	<tr>
+		<td>{{cots[i].idCotizacion}}</td>
+		<td>{{cots[i].objCliente.nameClient}}</td>
+		<td>{{cots[i].objProducto.nameProduct}}</td>
+		<td>{{cots[i].objProducto.priceProduct}}</td>
+		<td>{{cots[i].descuentos}}</td>
+		<td>{{cots[i].total}}</td>
+		<td>{{cots[i].comentarios}}</td>
+		<td>{{cots[i].limitePago}}</td>
+	
+
+
+	
+<td>
+<a style="text-decoration: none;" href="{{url_for('productDetails',productId=cots[i].objProducto.idProduct)}}" >
+	<button>Detalles</button>
+</a>
+{% if cots[i].editado%}
+<button type="button" disabled>Editado</button>
+{% else %}
+<form method="POST" action ="{{url_for('editarCotizaciones')}}">
+	<input type="hidden" name="idProduct" id="idProduct" value = "{{cots[i].objProducto.idProduct}}">
+	<button type="submit" value = "{{cots[i].idCotizacion}}" name="idCotizacion" id="idCotizacion">Editar</button>
+</form>
+{% endif %}
+<form action="{{url_for('deleteCotizacion')}}" onSubmit="return confirm('¿Quieres borrar la cotización {{cots[i].idCotizacion}}?');" method="POST">
+	<button type="submit" value = "{{cots[i].idCotizacion}}" name="idCotizacion" id="idCotizacion">Borrar</button>
+</form>
+</a>
+<br>
+</td>
+</tr>
+
+{%endfor%}
+</tbody>
+</table>
+{% endblock %}

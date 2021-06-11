@@ -1,0 +1,38 @@
+{% extends "layout.html" %}
+
+     {% block title %}Clientes{% endblock %}
+{% block content %}
+<table style="width:100%;">
+     <tr>
+         
+          <th>idCliente</th>
+          <th>Nombre Cliente</th>
+          <th>RFC</th>
+          <th>Tipo de persona</th>
+          <th>Opciones</th>
+     </tr>
+     <tr>
+               {%for i in range(0, len)%}
+               <td>{{clients[i].idClient}}</td>
+               <td>{{clients[i].nameClient}}</td>
+               <td>{{clients[i].rfcClient}}</td>
+               <td>{{"Físico" if clients[i].typeClient else "Moral"}}</td>
+     
+<td>
+<form action="{{url_for('createCotizacion')}}" method="POST">
+	<button type="submit" value="{{clients[i].idClient}}" name="clientId">Crear Cotizacion</button>
+</form>
+
+<form 
+     action="{{url_for('confirmDeleteClient')}}"
+    onSubmit="return confirm('¿Quieres borrar el cliente {{clients[i].nameClient}} ?');" method="POST">
+    <button type="submit" value="{{clients[i].idClient}}" name="clientId" id="clientId">
+    	Borrar
+    </button>
+</form>
+<a href="{{url_for('editClient',clientId=clients[i].idClient)}}">Editar</a>
+</td>
+</tr>
+{%endfor%}
+</table>
+{% endblock %}

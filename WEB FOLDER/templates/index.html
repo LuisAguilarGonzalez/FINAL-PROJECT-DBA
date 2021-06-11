@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Test Index</title>
+</head>
+<body>
+	<h1>BIG test</h1>
+	<table style="width:100%;">
+		<tr>
+			<td>{%for i in range(0, len)%}</td>
+			<td>{{tables[i]}}</td>
+			<td>{%endfor%}</td>
+		</tr>
+		<tr>
+			
+		</tr>
+	</table>
+<br>
+	<table>
+	<tr>
+		<td>{%for i in range(0, len2)%}</td>
+		<td>{{tables2[i]}}</td>
+	</tr><!-- 	{{tables2[i][0]}}
+	{{tables2[i][1]}}
+	{{tables2[i][2]}}
+	{{tables2[i][3]}} -->
+	<br>
+	</table>
+	{%endfor%}
+</body>
+</html>

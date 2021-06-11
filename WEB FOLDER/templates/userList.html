@@ -1,0 +1,33 @@
+{% extends "layout.html" %}
+
+     {% block title %}Usuarios{% endblock %}
+{% block content %}
+<body>
+<table style="width:100%;">
+     <tr>
+          <th>id Usuario</th>
+          <th>Nomebre</th>
+          <th>Opciones</th>
+     </tr>
+     <tr>
+          {%for i in range(0, len)%}
+          <td>{{userList[i].id}}</td>
+          <td>{{userList[i].username}}</td>
+     
+
+<td>
+<form 
+     action="{{url_for('confirmDeleteUser')}}"
+    onSubmit="return confirm('¿Quieres borrar el usuario {{userList[i].username}} ?');" method="POST">
+    <button type="submit" value="{{userList[i].id}}" name="userId" id="userId">
+    	Borrar
+    </button>
+</form>
+<a style="text-decoration: none;" href="{{url_for('editUser',userId=userList[i].id)}}">
+     <button>Cambiar Contraseña</button>
+</a>
+</td>
+</tr>
+{%endfor%}
+</table>
+{% endblock %}

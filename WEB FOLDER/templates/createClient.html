@@ -1,0 +1,26 @@
+{% extends "layout.html" %}
+
+	{% block title %}Crear Cliente{% endblock %}
+{% block content %}
+	<form action="/createClientSuccesful"  method="POST">
+			<div class="form">
+				<label class="formlabel">Nombre</label>
+				<input class="formtextfield" type="text" id = "nombre" name="nombre" autofocus="true" tabindex="1" placeholder="NOMBRE"/>
+				<div class="formerror hidden">
+				</div>
+				<div class="form">
+					<label class="formlabel">RFC</label>
+					<input class="formtextfield" type="text" id = "rfc" name="rfc" autofocus="true" tabindex="1" placeholder="RFC"/>
+					<div class="formerror hidden">
+					</div>
+					<div class="form">
+						<label>Físico
+							<input type="radio" id = "tipoCliente" name="tipoCliente" value="true" />
+						</label> 
+						<label>Moral
+							<input type="radio" id = "tipoCliente" name="tipoCliente" value="false" />
+						</label>
+					</div>
+					<input class="button" type="submit" tabindex="4" value="Enviar" />
+				</form>
+{% endblock %}
